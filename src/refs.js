@@ -56,9 +56,11 @@ function defineProperty(ref, property, target) {
       }
 
       // set new value
+      // 更新 target 的 value 值
       _value = value;
 
       // set inverse value
+      // 更新 value 的 inverseProperty 值为 target
       ref.set(_value, inverseProperty, target);
     }
   });
@@ -110,6 +112,8 @@ function defineProperty(ref, property, target) {
  */
 export default function Refs(a, b) {
 
+  // 避免因忘记使用 new 而导致的意外行为
+  // 返回 Refs 实例
   if (!(this instanceof Refs)) {
     return new Refs(a, b);
   }
@@ -137,6 +141,8 @@ Refs.prototype.bind = function(target, property) {
     if (!this.props[property]) {
       throw new Error('no property <' + property + '> in ref');
     }
+
+    // 取到 refs 时传入的属性描述符
     property = this.props[property];
   }
 

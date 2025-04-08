@@ -140,6 +140,9 @@ describe('refs', function() {
       // when
       a.foo = b;
 
+      // 更新 a 的 foo 属性的值为 b
+      // 也会更新 b 的 bar 属性的值为 a
+
       // then
       expect(a.foo).to.equal(b);
       expect(b.bar).to.equal(a);
